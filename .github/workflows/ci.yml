@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+# Aucun secret, aucun déploiement. Vérifie seulement le squelette.
+env:
+  NEXT_TELEMETRY_DISABLED: '1'
+  EXPO_NO_TELEMETRY: '1'
+  DO_NOT_TRACK: '1'
+
+jobs:
+  verify:
+    name: Lint, tests et build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Activer pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Activer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Vérifier le format
+        run: pnpm format:check
+
+      - name: Linter
+        run: pnpm lint
+
+      - name: Vérifier les types
+        run: pnpm typecheck
+
+      - name: Tester
+        run: pnpm test
+
+      - name: Construire
+        run: pnpm build

@@ -1,64 +1,84 @@
 # Architecture
 
-État au 25 novembre 2026. Rien ici n'est déployé.
+Les9 reprend la stack et la forme du squelette de [gazetlocal#1](https://github.com/lo1970/gazetlocal/pull/1), branche `cursor/squelette-monorepo-7589`, commit `fbbf3e14`. Cette pull request n'est pas sur `main`. Rien ici n'est déployé.
 
-## Ce que gazetlocal contient vraiment
+## Stack reprise
 
-Le modèle demandé est [lo1970/gazetlocal](https://github.com/lo1970/gazetlocal) : un monorepo site web plus apps iOS et Android, version générique d'un autre produit.
+Un seul langage, TypeScript, relie les trois faces. Les types vivent dans `@les9/domain`. Les textes d'interface vivent dans `@les9/i18n`.
 
-Lecture de `main` au commit `b47c23c2` : le dépôt ne contient que `README.md` (`# gazetlocal`). Pas de dossiers, pas de `package.json`, pas de config, pas de doc technique. Il n'y a donc aucun fichier à recopier, et aucun secret à laisser de côté parce qu'il n'y en a pas.
+**Web — Next.js 16 (React).** Pages servies par le serveur, une URL par langue (`/fr`, `/nl`), pas de script tiers. `/` redirige vers `/fr`. Next.js partage React avec le mobile.
 
-Les choix ci-dessous suivent la forme décrite pour gazetlocal (un dépôt, un site, une app pour iOS et Android, du code partagé). Ce ne sont pas des choix lus dans son code. Quand gazetlocal aura une stack, il faudra recaler Les9 dessus avant d'ajouter des fonctions.
+**Mobile — Expo SDK 58 (React Native).** Une seule base vise iOS et Android. Elle importe les mêmes types et les mêmes catalogues. Le squelette exporte un bundle web pour prouver que l'application se construit, sans certificat ni store.
 
-## Forme du monorepo
+**API — Hono sur Node.js 22.** Petit serveur TypeScript, testé sans base et sans compte cloud. Le dépôt vide (`EmptyGazetteStore`) tient la place du stockage.
 
+**Monorepo — pnpm 10.** Web, mobile, API et paquets partagés, avec une CI unique : format, lint, types, tests, build.
+
+**PostgreSQL, hébergé dans l'Union européenne, est prévu et n'est pas branché.** Aucune chaîne de connexion, aucun mot de passe, aucun client de base dans le dépôt.
+
+## Forme du contenu
+
+Le modèle vient du squelette gazetlocal. Le dépôt Les9 ne le remplit pas.
+
+```text
+Gazette
+  id, slug, name
+  identity.primaryColor
+  defaultLocale, locales (fr, nl)
+
+NewsItem / Announcement
+  gazetteId, slug
+  title, body : { fr, nl, en? }
+  publishedAt
 ```
-apps/web            site
-apps/mobile         une app Expo pour iOS et Android
-packages/shared     module TypeScript sans interface
-```
 
-npm workspaces relie les trois. Le site et l'app dépendent de `@les9/shared` en `"*"`. npm 10, utilisé ici, ne comprend pas le protocole `workspace:` (écart noté plus bas) : le `*` est la forme documentée par Expo pour npm, et le paquet est `private`, donc non publiable.
+## API
 
-Expo SDK 58 détecte le monorepo tout seul. Pas de `metro.config.js` manuel : la doc Expo demande de ne pas redéfinir `watchFolders` ni la résolution des `node_modules` à partir du SDK 52.
+| Méthode et chemin                      | Comportement actuel                  |
+| -------------------------------------- | ------------------------------------ |
+| `GET /health`                          | `{ "status": "ok" }`                 |
+| `GET /v1/gazettes`                     | `{ "gazettes": [] }`                 |
+| `GET /v1/gazettes/:slug`               | 404 tant que la gazette n'existe pas |
+| `GET /v1/gazettes/:slug/news`          | idem                                 |
+| `GET /v1/gazettes/:slug/announcements` | idem                                 |
 
-## Briques
+`Accept-Language` choisit le français ou le néerlandais pour les messages d'erreur. L'anglais, ou l'absence d'en-tête, retombe sur le français. Les réponses portent `Content-Language` et `Cache-Control: no-store`.
 
-| Brique | Rôle |
-| --- | --- |
-| Node.js 22, npm | Installation à la racine |
-| TypeScript | Site, app, module partagé |
-| Vite | Dev et build du site, fichiers statiques |
-| Expo SDK 58, React Native | Une base de code pour iOS et Android |
-| `@les9/shared` | `appName` et une page d'attente, lus par les deux apps |
+Le CORS n'est pas ouvert.
 
-Pas de backend, pas d'authentification, pas de base de données, pas de CI, pas de fichier `.env`.
+## Internationalisation
+
+- Catalogues complets : français et néerlandais.
+- Catalogue partiel : anglais, présent, non routé.
+- Le site redirige `/` vers `/fr`.
+- L'application mobile bascule la langue dans l'écran, sur les mêmes clés.
+- Aucune police distante : la pile système évite un appel vers un tiers.
+
+## Données
+
+- Pas de compte, pas de profil, pas de géolocalisation.
+- Pas d'analytics tiers. La télémétrie Next.js et Expo est désactivée dans la CI.
+- Hébergement européen plus tard, seulement avec l'accord de Lo. Rien n'est déployé.
+- Pas de secret. Pas de `.env`. Pas de clé. Pas de mot de passe.
+- Le squelette envoie `noindex`.
+- L'API n'écrit que le port d'écoute. Elle ne journalise pas les en-têtes d'un visiteur.
 
 ## Spécifique à Les9
 
-- Dépôt public `lo1970/les9`. Rien de privé n'y entre : pas de secret, pas de `.env` réel, pas de donnée personnelle.
-- Noms techniques en anglais : `@les9/web`, `@les9/mobile`, `@les9/shared`.
-- Identifiants provisoires, pas un domaine : `app.les9.mobile` (iOS et Android) et le scheme `les9`. À remplacer quand le nom de domaine et l'identité seront choisis.
-- Textes visibles réduits à un placeholder. Aucun texte, marque ou domaine d'un autre produit.
-- Icônes mobiles : fichiers du modèle Expo, en attendant une identité. Ce n'est pas un logo Les9.
-- Langue de la page d'attente : français. C'est un défaut de lecture, pas une décision de produit. Le `lang` du HTML est `fr`.
+- Dépôt public `lo1970/les9`. Noms `@les9/*`.
+- Les textes visibles disent « Les9 » et qu'aucun contenu réel n'est en place. Ils ne reprennent pas le pitch ni les articles d'un autre produit.
+- Le modèle « gazette / actualité / annonce » est celui du squelette de référence. Que Les9 soit ce produit-là reste une question ouverte : [questions-pour-lo.md](questions-pour-lo.md).
 
-## Écarts assumés
+## Écarts qui restent
 
-- Aucune reprise fichier à fichier de gazetlocal : il n'y a pas de stack à reprendre.
-- Outil de monorepo : npm, parce qu'il est déjà là et qu'Expo le prend en charge. Pas de pnpm, Yarn, Bun ou Turborepo tant que gazetlocal n'en montre pas un.
-- Dépendance interne en `"*"` plutôt qu'en `workspace:*` : npm 10.9 refuse ce protocole (`EUNSUPPORTEDPROTOCOL`). Le paquet partagé est marqué `private`.
-- Site en Vite plutôt qu'un framework plus lourd : le squelette doit s'installer et se builder sans compte ni service externe.
-- Projets natifs `ios/` et `android/` non commités. Expo les génère sur la machine de build (`npx expo prebuild`, ou au premier `expo run`). Les commiter sans Xcode ni Android SDK ici produirait un arbre non vérifié.
-- Pas de projet EAS, pas d'identifiant Expo. En créer un demanderait un compte et risquerait de poser un identifiant dans le dépôt public.
-- Pas de licence. Le dépôt public reste sans licence tant que Lo n'en choisit pas une.
-- Pas de pipeline qui déploie ou publie.
-- `npm audit` signale trois avis modérés, tous transitifs (`minimatch` via `@expo/fingerprint`, donc Expo). Les corriger demanderait de forcer une montée de version. Ils ne sont pas un secret et ne touchent pas le build du site. On ne lance pas `npm audit fix --force`.
+- Les PNG mobiles ne sont pas les binaires de gazetlocal. Ils reprennent le dessin de `apps/web/src/app/icon.svg` (trois traits). Ce n'est pas un logo Les9.
+- gazetlocal est un dépôt privé. Les9 est public : la même absence de secret, avec cette contrainte en plus.
+- Pas de licence, comme le squelette de référence.
+- Pas d'identifiant de paquet iOS ou Android. Le squelette de référence n'en fixe pas non plus. Aucune signature.
+- Dossiers natifs `ios/` et `android/` non versionnés.
+- Pas de projet EAS, pas de compte Expo dans le dépôt.
+- PostgreSQL non branché.
 
-## Ouvert
+## Hors de ce dépôt
 
-- Ce qu'est Les9 : contenu, public, fonctions. Voir [questions-pour-lo.md](questions-pour-lo.md).
-- Nom de domaine, langue, identité visuelle.
-- Comptes, données, hébergeur.
-- Recalage sur la stack réelle de gazetlocal dès qu'elle existe.
-- Licence du dépôt public.
+Aucun workflow ne déploie. Merger dans `main`, mettre le site en ligne, ou publier sur l'App Store ou le Play Store exige l'accord explicite de Lo.

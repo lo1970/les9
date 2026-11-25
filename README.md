@@ -1,63 +1,72 @@
 # Les9
 
-Monorepo local : un site web et une app mobile (iOS et Android) qui partagent le même petit module.
+Squelette : un site, une application iOS/Android et une API dans le même dépôt. Les types et les textes français et néerlandais sont partagés.
 
-Ce dépôt ne déploie rien et ne publie rien sur un store. Merger, déployer ou publier demande l'accord de Lo. Voir [docs/feuille-de-route.md](docs/feuille-de-route.md).
+Ce dépôt se construit en local et en CI. Il ne déploie rien, ne publie rien sur un store, et ne contient aucun secret. Le contenu réel de Les9 n'est pas inventé ici.
 
-## Contenu
+La stack est celle de la pull request [lo1970/gazetlocal#1](https://github.com/lo1970/gazetlocal/pull/1) (branche `cursor/squelette-monorepo-7589`). Le détail est dans [docs/architecture.md](docs/architecture.md).
 
-| Chemin | Rôle |
-| --- | --- |
-| `apps/web` | Site, Vite et TypeScript |
-| `apps/mobile` | App iOS et Android, un seul projet Expo |
-| `packages/shared` | Nom et pages d'attente, importés par le site et l'app |
-| `docs/architecture.md` | Choix techniques et écarts |
-| `docs/feuille-de-route.md` | Étapes jusqu'à un site et des apps utilisables |
-| `docs/questions-pour-lo.md` | Questions ouvertes |
+## Stack
+
+| Face   | Choix               | Pourquoi                                                     |
+| ------ | ------------------- | ------------------------------------------------------------ |
+| Web    | Next.js 16          | Site lisible, pages par langue, React partagé avec le mobile |
+| Mobile | Expo SDK 58         | Une base TypeScript pour iOS et Android                      |
+| API    | Hono sur Node.js 22 | Petit serveur testable, sans base ni compte cloud            |
+| Dépôt  | pnpm                | Un seul monorepo, une seule CI                               |
+
+La suite est dans [docs/feuille-de-route.md](docs/feuille-de-route.md). Les questions ouvertes sont dans [docs/questions-pour-lo.md](docs/questions-pour-lo.md). Les habitudes de code sont dans [docs/conventions.md](docs/conventions.md).
 
 ## Prérequis
 
-Node.js 22 et npm 10. Pour ouvrir l'app sur un téléphone ou un simulateur : Expo Go, ou Xcode (iOS, sur macOS) et Android Studio (Android).
+- Node.js 22
+- pnpm 10 (`corepack enable` puis `corepack prepare pnpm@10.33.4 --activate`)
 
-## Installation
-
-À la racine du dépôt :
-
-```bash
-npm install
-```
-
-## Site web
+## Démarrer
 
 ```bash
-npm run dev:web
+pnpm install
+pnpm dev:web
 ```
 
-Ouvre [http://localhost:5173](http://localhost:5173).
-
-Vérifier le typecheck et le build, sans serveur :
+Le site écoute sur le port 3000. `/` envoie vers `/fr`. `/nl` est le néerlandais.
 
 ```bash
-npm run check
+pnpm dev:api
 ```
 
-Le résultat du build est dans `apps/web/dist/`. Ce dossier n'est pas versionné.
+L'API écoute sur le port 3001.
 
-## App iOS et Android
+```text
+GET /health
+GET /v1/gazettes
+```
 
 ```bash
-npm run dev:mobile
+pnpm dev:mobile
 ```
 
-Expo affiche un QR code. Avec Expo Go, ouvre ce projet. Sur une machine qui a un simulateur :
+Expo démarre le projet mobile. Le build de CI exporte un bundle web (`expo export`), sans certificat et sans store.
+
+## Vérifier
+
+Les mêmes commandes que la CI :
 
 ```bash
-npm run ios -w @les9/mobile
-npm run android -w @les9/mobile
+pnpm format:check
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
 ```
 
-`ios` demande macOS et Xcode. `android` demande Android Studio. Les dossiers natifs `apps/mobile/ios` et `apps/mobile/android` ne sont pas dans git : Expo les génère sur la machine qui compile.
+## Langues
 
-## Ce qui n'est pas dans ce dépôt
+Français et néerlandais sont exigés. L'anglais est un catalogue partiel, non activé dans les routes. Les règles pour les agents suivants sont dans `.cursor/rules/`.
 
-Pas de compte, pas de serveur, pas de fichier `.env`, pas de clé. Les textes affichés sont des placeholders.
+## Limites
+
+- Pas de déploiement, pas de nom de domaine branché, pas de base de données.
+- Pas de mesure d'audience, pas de police chargée depuis un tiers.
+- Pas de secret, pas de donnée personnelle, pas de numéro de téléphone.
+- Merger, déployer et publier sur un store exigent l'accord de Lo.

@@ -1,0 +1,11 @@
+---
+description: RGPD, secrets et limites du dépôt
+alwaysApply: true
+---
+
+- Aucun secret, jeton, mot de passe, clé ou fichier `.env` réel dans le dépôt.
+- Aucun déploiement, aucune publication App Store ou Play Store, aucun workflow de mise en ligne.
+- Ne pas pousser sur `main`.
+- Aucun analytics, traceur ou police chargée depuis un tiers. Pas de mesure d'audience par défaut.
+- Aucune donnée personnelle, aucun numéro de téléphone, aucun contenu inventé d'un autre produit.
+- Hébergement futur dans l'Union européenne. Minimiser les données. PostgreSQL seulement quand il sera décidé, sans chaîne de connexion dans le dépôt.

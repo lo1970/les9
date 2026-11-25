@@ -1,37 +1,35 @@
 # Feuille de route
 
-Du squelette jusqu'à un site et des apps utilisables en local. Aucune date. Merger, déployer et publier restent des décisions séparées.
+Du squelette jusqu'à un site et des apps utilisables en local. Merger, déployer et publier restent des décisions séparées.
 
 ## 1. Squelette
 
-Cette branche. Le site se lance et se build en local. L'app mobile partage `@les9/shared` et se lance avec Expo. Les textes sont des placeholders.
+Cette branche. Site Next.js (`/fr`, `/nl`), application Expo, API Hono, types et catalogues FR/NL partagés, CI. Le contenu est vide. Rien n'est déployé. PostgreSQL est prévu, pas branché.
 
 ## 2. Réponses de produit
 
-Les questions de [questions-pour-lo.md](questions-pour-lo.md) : ce qu'est Les9, pour qui, quelles fonctions, d'où vient le contenu, quelle langue, quel domaine, quelle identité.
+Les questions de [questions-pour-lo.md](questions-pour-lo.md) : ce qu'est Les9, pour qui, quelles fonctions, d'où vient le contenu, quel domaine, quelle identité. Le modèle « gazette » vient du squelette gazetlocal. Il ne devient le modèle de Les9 que si tu le confirmes.
 
-Sans ces réponses, on ne remplit pas les pages avec un contenu inventé.
+## 3. Site utilisable en local
 
-## 3. Recaler la stack
+Pages, navigation et états vides qui correspondent aux réponses. Toujours `pnpm dev:web`, sans mise en ligne.
 
-gazetlocal n'a aujourd'hui qu'un README. Dès qu'il a une structure et des outils, on aligne Les9 (dossiers, gestionnaire de paquets, framework web, outillage mobile) et on ne garde des écarts que ceux qui sont documentés.
+## 4. Apps utilisables en local
 
-## 4. Site utilisable en local
+Les mêmes données partagées, sur iOS et Android, via Expo. Pas de binaire envoyé à un store.
 
-Pages, navigation et états vides qui correspondent aux réponses. Le contenu d'exemple reste clairement de l'exemple. Toujours `npm run dev:web`, sans mise en ligne.
+## 5. API branchée aux écrans
 
-## 5. Apps utilisables en local
+Le site et l'application lisent `GET /v1/gazettes` (ou les routes retenues après tes réponses). Le dépôt reste vide tant qu'il n'y a pas de contenu réel.
 
-Les mêmes données partagées, sur iOS et Android, via Expo Go ou un simulateur. Pas de binaire envoyé à un store.
+## 6. PostgreSQL dans l'Union européenne
 
-## 6. Comptes et données, seulement si c'est dans le périmètre
-
-Si les réponses demandent des comptes ou un stockage, on l'ajoute dans un second temps. Les secrets restent hors du dépôt public (aucun `.env` réel, aucune clé). Sinon, cette étape n'existe pas.
+Seulement après le choix d'hébergement. Aucun mot de passe et aucune chaîne de connexion dans le dépôt public. Les secrets restent hors de git.
 
 ## Accords exigés
 
 Ces trois actions ne font pas partie des étapes ci-dessus. Chacune attend un accord explicite de Lo :
 
 - merger cette branche, ou une suivante, dans `main` ;
-- déployer le site ;
+- déployer le site ou l'API ;
 - publier l'app sur l'App Store ou le Play Store.

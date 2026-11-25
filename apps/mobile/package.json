@@ -1,23 +1,28 @@
 {
   "name": "@les9/mobile",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "web": "expo start --web",
+    "build": "expo export --platform web --output-dir dist",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@les9/shared": "*",
+    "@expo/metro-runtime": "~58.0.17",
+    "@les9/domain": "workspace:*",
+    "@les9/i18n": "workspace:*",
     "expo": "~58.0.26",
     "expo-status-bar": "~58.0.5",
     "react": "19.3.0",
-    "react-native": "0.88.1"
+    "react-dom": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-web": "~0.21.4"
   },
   "devDependencies": {
-    "@types/react": "~19.3.0",
-    "typescript": "~6.0.3"
+    "@types/react": "~19.3.0"
   }
 }

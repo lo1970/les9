@@ -71,7 +71,7 @@ Le CORS n'est pas ouvert.
 
 ## Écarts qui restent
 
-- Le logo est noir et blanc : LES au-dessus d'un 9 anguleux de maillot, dans un cercle noir ouvert au trait irrégulier. Une variante blanche sur noir est dans `logo-negatif`. Les PNG mobiles reprennent le symbole. L'identité reste à confirmer.
+- Le logo est noir et blanc : LES, large, au-dessus d'un 9 de maillot très gras (œil ovale, jambe droite), dans un cercle noir ouvert au pinceau. Une variante blanche sur noir est dans `logo-negatif`. Les PNG mobiles reprennent le symbole. L'identité reste à confirmer.
 - gazetlocal est un dépôt privé. Les9 est public : la même absence de secret, avec cette contrainte en plus.
 - Pas de licence, comme le squelette de référence.
 - Pas d'identifiant de paquet iOS ou Android. Le squelette de référence n'en fixe pas non plus. Aucune signature.

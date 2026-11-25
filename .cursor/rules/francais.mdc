@@ -1,0 +1,8 @@
+---
+description: Le texte du dépôt est en français
+alwaysApply: true
+---
+
+- README, documentation, interface, messages d'erreur et commentaires utiles : français.
+- Identifiants de code, noms de paquets, champs JSON et routes techniques : anglais.
+- Ne pas laisser de phrase anglaise visible dans l'interface du MVP. L'anglais n'est pas une langue activée.

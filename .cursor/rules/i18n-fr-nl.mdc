@@ -1,0 +1,8 @@
+---
+description: Français et néerlandais obligatoires
+alwaysApply: true
+---
+
+- Toute chaîne visible passe par `@les9/i18n`.
+- Chaque clé ajoutée dans le catalogue français a sa traduction néerlandaise dans le même changement.
+- L'anglais reste optionnel : `en` peut être partiel, et ni les routes ni la négociation du MVP ne l'activent.

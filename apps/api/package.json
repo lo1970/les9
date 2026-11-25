@@ -1,0 +1,22 @@
+{
+  "name": "@les9/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm build && node --test test/*.test.js",
+    "dev": "node --watch dist/server.js",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@les9/domain": "workspace:*",
+    "@les9/i18n": "workspace:*",
+    "@hono/node-server": "2.1.11",
+    "hono": "4.13.22"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.6"
+  }
+}

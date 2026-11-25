@@ -1,40 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 760" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 730" fill="none">
   <title>Les9</title>
   <defs>
-    <symbol id="nine" overflow="visible">
-      <circle cx="300" cy="478" r="112" fill="#fff" />
-      <rect x="358" y="450" width="78" height="200" rx="16" fill="#fff" />
-      <circle cx="300" cy="478" r="50" fill="#000" />
-    </symbol>
-    <mask id="nine-out" maskUnits="userSpaceOnUse">
-      <rect width="640" height="760" fill="#000" />
-      <use href="#nine" transform="translate(330 530) scale(1.1) translate(-330 -530)" />
-    </mask>
-    <mask id="nine-gap" maskUnits="userSpaceOnUse">
-      <rect width="640" height="760" fill="#000" />
-      <use href="#nine" transform="translate(330 530) scale(1.045) translate(-330 -530)" />
-    </mask>
-    <mask id="nine-face" maskUnits="userSpaceOnUse">
-      <rect width="640" height="760" fill="#000" />
-      <use href="#nine" />
-    </mask>
+    <path
+      id="nine"
+      fill-rule="evenodd"
+      d="M400 380 L400 630 L336 630 L336 473.3 A100 100 0 1 1 400 380 Z M300 344 A36 36 0 1 0 300 345 Z"
+    />
   </defs>
 
   <g fill="#000" stroke="#fff" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
-    <path d="M168 36h26v70h66v26H168z" />
-    <path d="M286 36h92v24H312v16h52v22H312v14h68v26H286z" />
-    <path d="M412 36H490V58H434V68H490V124H412V102H468V90H412V36Z" />
+    <path d="M168 28h26v70h66v26H168z" />
+    <path d="M286 28h92v24H312v16h52v22H312v14h68v26H286z" />
+    <path d="M412 28H490V50H434V60H490V116H412V94H468V82H412V28Z" />
   </g>
 
-  <circle cx="320" cy="470" r="214" fill="#fff" stroke="#000" stroke-width="40" />
+  <circle cx="320" cy="455" r="220" fill="#fff" stroke="#000" stroke-width="40" />
 
-  <g mask="url(#nine-out)">
-    <rect width="640" height="760" fill="#000" />
-  </g>
-  <g mask="url(#nine-gap)">
-    <rect width="640" height="760" fill="#fff" />
-  </g>
-  <g mask="url(#nine-face)">
-    <rect width="640" height="760" fill="#000" />
-  </g>
+  <use href="#nine" fill="#000" stroke="#000" stroke-width="22" stroke-linejoin="round" fill-rule="evenodd" />
+  <use href="#nine" fill="#fff" stroke="#fff" stroke-width="12" stroke-linejoin="round" fill-rule="evenodd" />
+  <use href="#nine" fill="#000" fill-rule="evenodd" />
 </svg>

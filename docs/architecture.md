@@ -72,6 +72,7 @@ Le CORS n'est pas ouvert.
 ## Écarts qui restent
 
 - Le logo est le tracé de la marque choisie : LES au-dessus d'un 9 plein, dans un cercle au pinceau. Le JPEG de référence est dans `design/logo-choisi.jpg`. Une variante blanche sur noir est dans `logo-negatif`. Les icônes mobiles gardent le 9 dans le cercle.
+- Les avatars validés sont les fichiers d'origine, copiés tels quels : `apps/web/public/avatar/avatar-face.jpg` et `apps/web/public/avatar/avatar-dos.jpg`. Pas de page à propos, donc ils ne sont pas affichés.
 - gazetlocal est un dépôt privé. Les9 est public : la même absence de secret, avec cette contrainte en plus.
 - Pas de licence, comme le squelette de référence.
 - Pas d'identifiant de paquet iOS ou Android. Le squelette de référence n'en fixe pas non plus. Aucune signature.

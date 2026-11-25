@@ -1,22 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 730" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1020" fill="none">
   <title>Les9</title>
-  <defs>
-    <path
-      id="nine"
-      fill-rule="evenodd"
-      d="M400 380 L400 630 L336 630 L336 473.3 A100 100 0 1 1 400 380 Z M300 344 A36 36 0 1 0 300 345 Z"
-    />
-  </defs>
-
-  <g fill="#000" stroke="#fff" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
-    <path d="M168 28h26v70h66v26H168z" />
-    <path d="M286 28h92v24H312v16h52v22H312v14h68v26H286z" />
-    <path d="M412 28H490V50H434V60H490V116H412V94H468V82H412V28Z" />
+  <g fill="#000" stroke="#fff" stroke-width="8" stroke-linejoin="miter" stroke-linecap="square">
+    <g transform="translate(325.0 12)"><path d="M0 0H22V66H74V88H0Z"/>
+</g>
+<g transform="translate(409.0 12)"><path d="M0 0H78V22H22V33H62V55H22V66H78V88H0Z"/>
+</g>
+<g transform="translate(497.0 12)"><path d="M0 0H78V22H14V32H78V88H0V66H56V54H0Z"/>
+</g>
+<g transform="translate(147.0 118)"><path d="M0 0H78V22H22V33H62V55H22V66H78V88H0Z"/>
+</g>
+<g transform="translate(235.0 118)"><path d="M0 0H26V88H0Z M52 0H78V88H52Z M20 0L46 0L78 88L52 88Z"/>
+</g>
+<g transform="translate(323.0 118)"><path d="M0 0H78V22H22V66H48V44H78V88H0Z M46 36H78V52H46Z"/>
+</g>
+<g transform="translate(411.0 118)"><path d="M18 0H60L78 88H54L48 68H30L24 88H0Z M36 42H46L41 58Z" fill-rule="evenodd"/>
+</g>
+<g transform="translate(499.0 118)"><path d="M0 0H78V22H22V66H48V44H78V88H0Z M46 36H78V52H46Z"/>
+</g>
+<g transform="translate(587.0 118)"><path d="M0 0H78V22H22V33H62V55H22V66H78V88H0Z"/>
+<path d="M28 -18L54 -14L38 2Z"/>
+</g>
+<g transform="translate(675.0 118)"><path d="M0 0H78V22H14V32H78V88H0V66H56V54H0Z"/>
+</g>
   </g>
-
-  <circle cx="320" cy="455" r="220" fill="#fff" stroke="#000" stroke-width="40" />
-
-  <use href="#nine" fill="#000" stroke="#000" stroke-width="22" stroke-linejoin="round" fill-rule="evenodd" />
-  <use href="#nine" fill="#fff" stroke="#fff" stroke-width="12" stroke-linejoin="round" fill-rule="evenodd" />
-  <use href="#nine" fill="#000" fill-rule="evenodd" />
+  <g transform="translate(450.0 640.0)" fill="#000">
+    <path d="M -307.5 -133.1 L -302.1 -158.7 L -290.1 -181.5 L -271.6 -199.9 L -249.2 -214.1 L -226.0 -225.9 L -204.5 -237.8 L -185.4 -251.7 L -167.6 -267.6 L -149.2 -283.6 L -135.9 -313.7 L -112.1 -323.6 L -86.9 -329.2 L -61.4 -331.9 L -35.9 -333.1 L -10.7 -333.2 L 14.3 -330.8 L 36.5 -306.4 L 57.9 -294.7 L 77.0 -278.9 L 94.5 -263.1 L 110.7 -248.0 L 127.5 -236.0 L 147.3 -229.5 L 169.8 -225.1 L 193.1 -219.5 L 215.1 -210.2 L 234.3 -196.8 L 250.9 -180.4 L 266.4 -162.6 L 282.6 -144.5 L 299.9 -125.8 L 316.8 -105.7 L 330.4 -83.2 L 338.3 -58.5 L 339.8 -32.7 L 336.6 -6.9 L 331.4 18.2 L 326.8 42.8 L 323.4 67.4 L 319.8 92.3 L 313.8 116.8 L 289.3 133.2 L 275.9 153.2 L 260.2 171.3 L 244.3 188.7 L 229.2 206.3 L 214.1 224.2 L 197.4 240.7 L 186.9 266.5 L 163.0 274.2 L 137.3 276.3 L 111.7 275.2 L 88.0 274.5 L 66.4 277.4 L 45.8 284.7 L 24.9 294.6 L 2.7 303.6 L -20.5 308.7 L -44.0 308.5 L -67.0 303.9 L -89.3 296.7 L -111.1 288.4 L -132.5 279.1 L -152.7 267.6 L -170.7 252.8 L -185.4 234.4 L -197.3 214.1 L -208.0 194.1 L -220.1 176.3 L -235.8 161.3 L -254.8 147.5 L -247.9 143.5 L -229.2 156.8 L -213.8 171.3 L -200.8 187.3 L -188.3 204.3 L -173.8 219.7 L -156.3 231.5 L -136.1 238.6 L -115.0 242.2 L -94.4 245.0 L -75.0 249.1 L -56.3 255.3 L -37.4 262.1 L -17.8 266.9 L 2.4 267.7 L 22.3 264.6 L 41.8 259.6 L 61.2 255.5 L 81.6 254.3 L 103.8 255.7 L 127.9 257.4 L 152.5 256.5 L 176.0 250.9 L 187.1 228.0 L 205.1 214.7 L 221.6 199.6 L 237.4 183.4 L 252.0 165.9 L 263.6 146.4 L 270.1 124.4 L 285.3 106.2 L 280.9 81.1 L 274.8 57.3 L 270.7 35.4 L 271.4 14.9 L 276.5 -5.7 L 283.2 -27.2 L 287.5 -49.7 L 286.5 -72.1 L 279.4 -93.2 L 267.7 -112.3 L 254.1 -129.9 L 240.3 -146.7 L 226.7 -163.0 L 212.4 -178.4 L 196.3 -191.9 L 178.2 -202.6 L 159.2 -211.1 L 140.7 -219.2 L 123.7 -229.0 L 107.5 -240.7 L 91.8 -255.6 L 74.8 -271.2 L 55.2 -281.0 L 33.9 -284.5 L 13.0 -300.1 L -9.5 -294.6 L -31.2 -289.1 L -52.8 -285.5 L -74.9 -283.7 L -97.5 -281.4 L -119.7 -276.3 L -132.2 -251.4 L -150.4 -240.1 L -168.0 -228.0 L -186.6 -217.0 L -207.6 -207.5 L -230.8 -198.3 L -254.0 -187.0 L -274.5 -171.8 L -290.0 -152.4 L -300.1 -129.9 Z"/>
+  </g>
+  <g transform="translate(288.0 410.0)" fill-rule="evenodd" stroke-linejoin="miter">
+    <path d="
+M 40 24
+L 232 16
+L 276 48
+L 284 156
+L 300 392
+L 188 404
+L 174 176
+L 112 186
+L 46 156
+L 24 52
+Z
+M 86 64
+L 214 56
+L 236 90
+L 226 150
+L 108 160
+L 74 118
+Z
+" fill="#000" stroke="#000" stroke-width="26"/>
+    <path d="
+M 40 24
+L 232 16
+L 276 48
+L 284 156
+L 300 392
+L 188 404
+L 174 176
+L 112 186
+L 46 156
+L 24 52
+Z
+M 86 64
+L 214 56
+L 236 90
+L 226 150
+L 108 160
+L 74 118
+Z
+" fill="#fff" stroke="#fff" stroke-width="12"/>
+    <path d="
+M 40 24
+L 232 16
+L 276 48
+L 284 156
+L 300 392
+L 188 404
+L 174 176
+L 112 186
+L 46 156
+L 24 52
+Z
+M 86 64
+L 214 56
+L 236 90
+L 226 150
+L 108 160
+L 74 118
+Z
+" fill="#000"/>
+  </g>
 </svg>

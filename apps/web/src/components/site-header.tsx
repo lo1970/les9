@@ -11,7 +11,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       </a>
       <div className="topbar-inner">
         <Link className="brand" href={`/${locale}`}>
-          {translate(locale, 'app.name')}
+          <img src="/logo.svg" alt={translate(locale, 'app.name')} />
         </Link>
         <nav className="sections" aria-label={translate(locale, 'nav.home')}>
           <Link href={`/${locale}`}>{translate(locale, 'nav.home')}</Link>

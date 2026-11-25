@@ -81,10 +81,13 @@ a:hover {
 }
 
 .brand {
-  font-family: 'Iowan Old Style', Palatino, Georgia, serif;
-  font-size: 1.35rem;
-  letter-spacing: -0.03em;
+  display: flex;
   text-decoration: none;
+}
+
+.brand img {
+  height: 4.75rem;
+  width: auto;
 }
 
 .sections,

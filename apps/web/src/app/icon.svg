@@ -1,6 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#f3efe4"/>
-  <rect x="6" y="8" width="20" height="2" fill="#1c1915"/>
-  <rect x="6" y="15" width="13" height="2" fill="#7a2e24"/>
-  <rect x="6" y="22" width="20" height="2" fill="#1c1915"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="48 16 544 544" fill="none">
+  <title>Les9</title>
+  <defs>
+    <clipPath id="upper">
+      <polygon points="50,0 640,0 640,590 50,0" />
+    </clipPath>
+    <clipPath id="lower">
+      <polygon points="0,0 50,0 640,590 640,660 0,660" />
+    </clipPath>
+    <symbol id="nine" overflow="visible">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <circle cx="304" cy="188" r="58" />
+        <line x1="362" y1="188" x2="362" y2="412" />
+      </g>
+    </symbol>
+  </defs>
+
+  <g clip-path="url(#upper)">
+    <circle cx="320" cy="270" r="198" fill="#000" />
+  </g>
+  <g clip-path="url(#lower)">
+    <circle cx="320" cy="270" r="198" fill="#fff" />
+  </g>
+  <circle cx="320" cy="270" r="198" fill="none" stroke="#000" stroke-width="14" />
+
+  <g clip-path="url(#upper)" color="#fff">
+    <use href="#nine" stroke-width="86" />
+  </g>
+  <g clip-path="url(#lower)" color="#000">
+    <use href="#nine" stroke-width="86" />
+  </g>
+  <g clip-path="url(#upper)" color="#000">
+    <use href="#nine" stroke-width="62" />
+  </g>
+  <g clip-path="url(#lower)" color="#fff">
+    <use href="#nine" stroke-width="62" />
+  </g>
+  <g clip-path="url(#upper)" color="#fff">
+    <use href="#nine" stroke-width="38" />
+  </g>
+  <g clip-path="url(#lower)" color="#000">
+    <use href="#nine" stroke-width="38" />
+  </g>
+
+  <g clip-path="url(#upper)">
+    <rect x="68" y="248" width="504" height="52" rx="10" fill="#fff" />
+    <rect x="84" y="262" width="472" height="24" rx="6" fill="#000" />
+  </g>
+  <g clip-path="url(#lower)">
+    <rect x="68" y="248" width="504" height="52" rx="10" fill="#000" />
+    <rect x="84" y="262" width="472" height="24" rx="6" fill="#fff" />
+  </g>
+
+  
 </svg>

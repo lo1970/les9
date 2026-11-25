@@ -71,7 +71,7 @@ Le CORS n'est pas ouvert.
 
 ## Écarts qui restent
 
-- Les PNG mobiles ne sont pas les binaires de gazetlocal. Ils reprennent le dessin de `apps/web/src/app/icon.svg` (trois traits). Ce n'est pas un logo Les9.
+- Le logo est un dessin noir et blanc propre à Les9 (9 de maillot, barre du Ⓐ, mot LES). Les PNG mobiles en sont dérivés, pas les binaires de gazetlocal. L'identité reste à confirmer.
 - gazetlocal est un dépôt privé. Les9 est public : la même absence de secret, avec cette contrainte en plus.
 - Pas de licence, comme le squelette de référence.
 - Pas d'identifiant de paquet iOS ou Android. Le squelette de référence n'en fixe pas non plus. Aucune signature.

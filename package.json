@@ -1,0 +1,19 @@
+{
+  "name": "les9",
+  "private": true,
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w @les9/web --",
+    "dev:mobile": "npm run start -w @les9/mobile --",
+    "build:web": "npm run build -w @les9/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "check": "npm run typecheck && npm run build:web"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Les9",
+    "slug": "les9",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "les9",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.les9.mobile"
+    },
+    "android": {
+      "package": "app.les9.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#F6F4EF",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": []
+  }
+}
